@@ -1,0 +1,28 @@
+This project is a webform app that takes a search term as an input and returns the first page of search results for that search term from both Bing and Yahoo.
+
+I have made the syntax of each search engine's pulled output similar in structure: 
+
+'search engine identifier
+link
+title/summary of link contents
+description'
+
+I have accomodated for cases when a search term is entered that yields no results. I have a basic bug catching/reporting email system in place - with more time I would refine this however.
+
+The email usernames and password used in the bug catching/reporting system are to be filled in with valid credentials. I am a fan of my specific catch which checks an issue I've noticed with the Bing search result manipulation, but the other two are not particularly strong - the bug I discuss later regarding Yahoo's search outputs for obtuse results is not appropriately caught here and with more time I would look into this.
+
+The NUnit testing is not how I would have done it if I were to start again. I believe that I would perform test driven development where I created functions in a base classlibrary and called upon them in the NUnit testing project, and then when I had created a test for every necessary component of the app, built the app using all of those tested functions.
+
+At present, the units used in the actual webform app are not directly tested in the NUnit testing project, only paraphrased components of those functions are tested.
+
+This is suboptimal obviously. 
+
+There is a known bug with the yahoo search results whereby for obtuse search terms it claims to have not returned results when if you were to enter that search term in a browser for that website you would get results. Had I more time I would work on this. However at present it does work more or less and I am optimistically assuming we will not be giving obtuse search terms to the app.
+
+This could in principle be scaled up to look at more pages than the top page for each website. 
+
+This could in principle be linked up to an SQL database and each search term and its results stored. Or perhaps a 'get csv output' button could be added to the app if needs be.
+
+As previously discussed, I am not overjoyed with the NUnit testing, it is shallow cursory testing at best, a lot more tests could and should be done, and it doesnt even use the functions the app uses - so if something changes about Bing's html layout for instance, the NUnit test would pick this up, but then I'd have to change both the NUnit test and separately the app's functions.
+
+This was a very enjoyable project and I learned a lot doing it. 
