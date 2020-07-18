@@ -42,7 +42,15 @@ namespace WebScraper
         }
         private void GetYahooResults(string searchterm)
         {
-            GetSearchEngineResultsAsync(searchterm, "https://uk.search.yahoo.com/search?q=", "//div[@class='dd algo algo-sr Sr']", "Yahoo");            
+            List<string> ClassLabels = new List<string> { "//div[@class='dd algo algo-sr relsrch Sr']", "//div[@class='dd algo algo-sr relsrch fst Sr']", "//div[@class='dd algo algo-sr relsrch lst Sr']" };
+            foreach (string S in ClassLabels)
+            {
+                GetSearchEngineResultsAsync(searchterm, "https://uk.search.yahoo.com/search?q=", S, "Yahoo");
+            }
+            //GetSearchEngineResultsAsync(searchterm, "https://uk.search.yahoo.com/search?q=", "//div[@class='dd algo algo-sr Sr']", "Yahoo");
+            //"dd algo algo-sr relsrch Sr"
+            //"dd algo algo-sr relsrch fst Sr"
+            //"dd algo algo-sr relsrch lst Sr"
         }
 
         private async void GetSearchEngineResultsAsync(string searchterm, string url_stem, string NodeSelectionTerm, string searchEngine)
